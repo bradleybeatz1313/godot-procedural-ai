@@ -337,3 +337,18 @@ func _action_patrol(context: BehaviorContext) -> int:
 		return BehaviorTreeNode.FAILURE  # Fall through to pursue
 	
 	return BehaviorTreeNode.RUNNING
+
+
+## Returns health as a ratio [0-1].
+func get_health_ratio() -> float:
+	return health / max_health
+
+## Returns true if agent is alive.
+func is_alive() -> bool:
+	return health > 0.0
+
+## Returns distance to current target, INF if none.
+func get_target_distance() -> float:
+	if current_target and is_instance_valid(current_target):
+		return global_position.distance_to(current_target.global_position)
+	return INF
