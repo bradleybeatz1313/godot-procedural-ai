@@ -32,3 +32,13 @@ signal calm_period_ended
 
 # Debug / Metrics
 signal metric_logged(category: String, key: String, value: Variant)
+
+
+## Emitted when the dungeon is fully generated and navigation mesh is ready.
+signal dungeon_ready(dungeon_data)
+
+## Emitted when an agent picks up an item.
+signal item_collected(agent, item_type)
+
+## Emitted each wave start.
+signal wave_started(wave_number: int)
