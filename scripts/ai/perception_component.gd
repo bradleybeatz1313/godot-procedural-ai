@@ -75,3 +75,17 @@ func hear_sound(sound_pos: Vector2, owner_pos: Vector2, loudness: float = 1.0) -
 	var effective_range := hearing_range * loudness
 	if owner_pos.distance_to(sound_pos) <= effective_range:
 		last_heard_position = sound_pos
+
+
+## Returns visible targets sorted by distance (nearest first).
+func get_visible_targets_sorted() -> Array[Node2D]:
+	var targets := get_visible_targets()
+	targets.sort_custom(func(a, b):
+		return global_position.distance_to(a.global_position) < \
+		       global_position.distance_to(b.global_position)
+	)
+	return targets
+
+## Returns true if node is within hearing range.
+func can_hear(node: Node2D, intensity: float = 1.0) -> bool:
+	return global_position.distance_to(node.global_position) <= hearing_range * intensity
