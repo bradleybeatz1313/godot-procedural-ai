@@ -50,3 +50,16 @@ func _avoid_obstacles(owner: CharacterBody2D) -> Vector2:
 			avoidance += hit_normal
 	
 	return avoidance
+
+
+## Flee from a position (opposite of seek).
+func flee(from_pos: Vector2) -> void:
+	var dir := (global_position - from_pos).normalized()
+	_desired_velocity = dir * max_speed
+
+## Arrive: slows down as agent approaches target.
+func arrive(target_pos: Vector2, slow_radius: float = 48.0) -> void:
+	var to_target := target_pos - global_position
+	var dist := to_target.length()
+	var speed := max_speed if dist > slow_radius else max_speed * (dist / slow_radius)
+	_desired_velocity = to_target.normalized() * speed
