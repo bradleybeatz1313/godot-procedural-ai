@@ -26,3 +26,13 @@ extends Resource
 @export var aggression: float = 0.5      ## 0=passive, 1=always attacks
 @export var flee_threshold: float = 0.2  ## Health ratio to trigger flee
 @export var patrol_radius: float = 150.0
+
+
+## Patrol radius around spawn point (0 = entire dungeon).
+@export var patrol_radius: float = 0.0
+
+## Whether agent respawns after death.
+@export var respawns: bool = false
+
+## Respawn delay in seconds.
+@export var respawn_delay: float = 5.0
