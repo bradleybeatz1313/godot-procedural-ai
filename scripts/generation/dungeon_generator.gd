@@ -476,3 +476,15 @@ func _build_dungeon_data() -> DungeonData:
 	data.tile_size = tile_size
 	data.seed = _rng.seed
 	return data
+
+
+## Returns a random walkable position from generated rooms.
+func get_random_walkable_position() -> Vector2:
+	if _rooms.is_empty():
+		return Vector2.ZERO
+	var room: Rect2 = _rooms[randi() % _rooms.size()]
+	return room.get_center()
+
+## Total number of generated rooms.
+func get_room_count() -> int:
+	return _rooms.size()
