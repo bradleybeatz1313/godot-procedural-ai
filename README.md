@@ -110,3 +110,11 @@ This system is designed with AI research extensibility in mind:
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE)
+
+---
+
+## Quick Start
+
+1. Open `project.godot` in Godot 4.2+
+2. Run the main scene -- dungeon generates procedurally each run
+3. Set `debug_draw = true` on any AIAgent node to visualize perception cones and paths
