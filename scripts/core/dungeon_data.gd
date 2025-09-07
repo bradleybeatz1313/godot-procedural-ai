@@ -39,3 +39,17 @@ func to_json() -> String:
 		"room_count": rooms.size(),
 		"corridor_count": corridors.size()
 	})
+
+
+## Returns all rooms as an array of Rect2.
+func get_rooms() -> Array[Rect2]:
+	return _room_list.duplicate()
+
+## Total walkable tile count.
+func walkable_tile_count() -> int:
+	return _walkable_tiles.size()
+
+## Check if a world position is walkable.
+func is_walkable(world_pos: Vector2) -> bool:
+	var tile := (world_pos / tile_size).floor()
+	return _walkable_tiles.has(tile)
