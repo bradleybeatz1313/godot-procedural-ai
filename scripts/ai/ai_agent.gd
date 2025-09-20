@@ -352,3 +352,16 @@ func get_target_distance() -> float:
 	if current_target and is_instance_valid(current_target):
 		return global_position.distance_to(current_target.global_position)
 	return INF
+
+
+## Heal by amount, clamped to max_health.
+func heal(amount: float) -> void:
+	health = minf(health + amount, max_health)
+	health_changed.emit(health, max_health)
+
+## Stun for duration seconds.
+func stun(duration: float) -> void:
+	set_state(&"stunned")
+	await get_tree().create_timer(duration).timeout
+	if is_alive() and _current_state == &"stunned":
+		set_state(&"idle")
