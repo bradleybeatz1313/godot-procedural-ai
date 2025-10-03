@@ -60,3 +60,12 @@ func get_random_walkable_position() -> Vector2:
 		return Vector2.ZERO
 	var cell := _walkable_cells[_rng.randi() % _walkable_cells.size()]
 	return Vector2(cell) * _dungeon_data.tile_size
+
+
+## Total agents currently alive in the scene.
+static func get_alive_agent_count() -> int:
+	var count := 0
+	for node in _instance.get_tree().get_nodes_in_group("agents"):
+		if node.has_method("is_alive") and node.is_alive():
+			count += 1
+	return count
