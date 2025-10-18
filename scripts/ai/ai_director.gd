@@ -321,3 +321,13 @@ func get_stats() -> Dictionary:
 		"performance": _evaluate_player_performance(),
 		"in_calm": _in_calm_period,
 	}
+
+
+## Returns current threat level as a normalized float [0-1].
+func get_threat_level() -> float:
+	return clampf(_current_threat / _max_threat, 0.0, 1.0)
+
+## Force-set the difficulty tier (0=easy 1=normal 2=hard 3=brutal).
+func set_difficulty(tier: int) -> void:
+	_difficulty_tier = clampi(tier, 0, 3)
+	_recalculate_spawn_rates()
