@@ -142,3 +142,18 @@ class ParallelNode extends BehaviorTreeNode:
 		if failures > children.size() - _success_threshold:
 			return FAILURE
 		return RUNNING
+
+
+## Returns the name of the currently executing leaf node, if any.
+func get_active_leaf_name() -> StringName:
+	return _last_active_leaf if _last_active_leaf else &""
+
+## Reset all running-child state before re-evaluating from root.
+func reset_running_state() -> void:
+	_clear_running(root_node)
+
+func _clear_running(node: BehaviorTreeNode) -> void:
+	node.reset_running()
+	for child in node.get_children():
+		if child is BehaviorTreeNode:
+			_clear_running(child)
