@@ -118,3 +118,18 @@ MIT License — see [LICENSE](LICENSE)
 1. Open `project.godot` in Godot 4.2+
 2. Run the main scene -- dungeon generates procedurally each run
 3. Set `debug_draw = true` on any AIAgent node to visualize perception cones and paths
+
+---
+
+## Architecture
+
+    AIAgent
+    +-- PerceptionComponent  (sight cone + hearing radius)
+    +-- SteeringComponent    (seek / arrive / flee forces)
+    +-- BehaviorTree         (priority selector root)
+    |   +-- Flee sequence    (health < 20%)
+    |   +-- Attack sequence  (target in range)
+    |   +-- Pursue sequence  (target visible)
+    |   +-- Investigate      (heard noise)
+    |   +-- Patrol           (default)
+    +-- EventBus             (decoupled signals)
