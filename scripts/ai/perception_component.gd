@@ -89,3 +89,14 @@ func get_visible_targets_sorted() -> Array[Node2D]:
 ## Returns true if node is within hearing range.
 func can_hear(node: Node2D, intensity: float = 1.0) -> bool:
 	return global_position.distance_to(node.global_position) <= hearing_range * intensity
+
+
+## Alert level based on proximity of nearest visible target.
+func get_alert_level() -> float:
+	var targets := get_visible_targets()
+	if targets.is_empty():
+		return 0.0
+	var nearest_dist := INF
+	for t in targets:
+		nearest_dist = minf(nearest_dist, global_position.distance_to(t.global_position))
+	return 1.0 - clampf(nearest_dist / sight_range, 0.0, 1.0)
