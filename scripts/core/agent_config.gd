@@ -36,3 +36,10 @@ extends Resource
 
 ## Respawn delay in seconds.
 @export var respawn_delay: float = 5.0
+
+
+## Loot table weight (higher = more likely to drop items on death).
+@export var loot_weight: float = 1.0
+
+## Faction tag used for group membership.
+@export var faction: StringName = &"enemy"
