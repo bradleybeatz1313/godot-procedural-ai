@@ -365,3 +365,10 @@ func stun(duration: float) -> void:
 	await get_tree().create_timer(duration).timeout
 	if is_alive() and _current_state == &"stunned":
 		set_state(&"idle")
+
+
+## Returns true if this agent and other are in the same faction.
+func is_same_faction(other: AIAgent) -> bool:
+	if not config or not other.config:
+		return false
+	return config.faction == other.config.faction
