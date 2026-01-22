@@ -488,3 +488,13 @@ func get_random_walkable_position() -> Vector2:
 ## Total number of generated rooms.
 func get_room_count() -> int:
 	return _rooms.size()
+
+
+## Returns all door/corridor connection points between rooms.
+func get_connection_points() -> Array[Vector2]:
+	return _connections.duplicate()
+
+## Seed the dungeon RNG for reproducible generation.
+func set_seed(seed_value: int) -> void:
+	_rng = RandomNumberGenerator.new()
+	_rng.seed = seed_value
