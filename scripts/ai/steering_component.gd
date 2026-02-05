@@ -63,3 +63,11 @@ func arrive(target_pos: Vector2, slow_radius: float = 48.0) -> void:
 	var dist := to_target.length()
 	var speed := max_speed if dist > slow_radius else max_speed * (dist / slow_radius)
 	_desired_velocity = to_target.normalized() * speed
+
+
+## Wander: drifts in a slowly-changing random direction.
+var _wander_angle: float = 0.0
+func wander(delta: float, jitter: float = 0.4) -> void:
+	_wander_angle += randf_range(-jitter, jitter)
+	var dir := Vector2(cos(_wander_angle), sin(_wander_angle))
+	_desired_velocity = _desired_velocity.lerp(dir * max_speed * 0.5, delta * 2.0)
