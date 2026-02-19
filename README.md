@@ -133,3 +133,15 @@ MIT License — see [LICENSE](LICENSE)
     |   +-- Investigate      (heard noise)
     |   +-- Patrol           (default)
     +-- EventBus             (decoupled signals)
+
+---
+
+## Dungeon Generation
+
+The generator uses **Binary Space Partitioning (BSP)**:
+
+1. Recursively split the arena into sub-rectangles until rooms reach min size
+2. Place a room inside each leaf with random padding
+3. Connect adjacent rooms with L-shaped corridors
+4. Build A* navigation graph from walkable tiles
+5. Place agents at room centers, respecting faction spawn rules
