@@ -42,3 +42,10 @@ signal item_collected(agent, item_type)
 
 ## Emitted each wave start.
 signal wave_started(wave_number: int)
+
+
+## Emitted when all enemies in a room are defeated.
+signal room_cleared(room_rect: Rect2)
+
+## Emitted when the player enters a new room.
+signal room_entered(room_rect: Rect2)
