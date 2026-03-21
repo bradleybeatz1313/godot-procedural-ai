@@ -372,3 +372,14 @@ func is_same_faction(other: AIAgent) -> bool:
 	if not config or not other.config:
 		return false
 	return config.faction == other.config.faction
+
+
+## Returns a snapshot of current agent state for logging.
+func get_state_snapshot() -> Dictionary:
+	return {
+		"state": _current_state,
+		"health": health,
+		"has_target": current_target != null and is_instance_valid(current_target),
+		"position": global_position,
+		"path_length": current_path.size(),
+	}
