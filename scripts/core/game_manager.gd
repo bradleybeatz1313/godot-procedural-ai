@@ -69,3 +69,8 @@ static func get_alive_agent_count() -> int:
 		if node.has_method("is_alive") and node.is_alive():
 			count += 1
 	return count
+
+
+## Returns elapsed time since level start in seconds.
+static func get_level_time() -> float:
+	return _instance._level_timer if _instance else 0.0
