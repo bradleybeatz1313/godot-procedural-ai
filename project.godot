@@ -45,3 +45,6 @@ gdscript/warnings/unused_signal=1
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+
+[application]
+config/version="1.4.0"
