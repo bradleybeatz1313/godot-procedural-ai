@@ -383,3 +383,10 @@ func get_state_snapshot() -> Dictionary:
 		"position": global_position,
 		"path_length": current_path.size(),
 	}
+
+## Instantly teleport to position (bypasses physics, use sparingly).
+func teleport_to(pos: Vector2) -> void:
+	global_position = pos
+	current_path = PackedVector2Array()
+	path_index = 0
+	set_state(&"idle")
