@@ -498,3 +498,12 @@ func get_connection_points() -> Array[Vector2]:
 func set_seed(seed_value: int) -> void:
 	_rng = RandomNumberGenerator.new()
 	_rng.seed = seed_value
+
+## Returns the bounding rect of the entire generated dungeon.
+func get_dungeon_bounds() -> Rect2:
+	if _rooms.is_empty():
+		return Rect2()
+	var bounds := _rooms[0]
+	for room in _rooms:
+		bounds = bounds.merge(room)
+	return bounds
