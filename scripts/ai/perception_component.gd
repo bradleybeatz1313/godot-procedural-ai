@@ -100,3 +100,10 @@ func get_alert_level() -> float:
 	for t in targets:
 		nearest_dist = minf(nearest_dist, global_position.distance_to(t.global_position))
 	return 1.0 - clampf(nearest_dist / sight_range, 0.0, 1.0)
+
+## Maximum number of simultaneous targets tracked.
+@export var max_tracked_targets: int = 8
+
+## Returns the count of currently visible targets.
+func visible_target_count() -> int:
+	return get_visible_targets().size()
