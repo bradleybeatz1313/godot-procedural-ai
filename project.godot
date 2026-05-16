@@ -48,3 +48,6 @@ renderer/rendering_method="gl_compatibility"
 
 [application]
 config/version="1.4.0"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
