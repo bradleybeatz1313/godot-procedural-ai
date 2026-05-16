@@ -49,3 +49,9 @@ signal room_cleared(room_rect: Rect2)
 
 ## Emitted when the player enters a new room.
 signal room_entered(room_rect: Rect2)
+
+## Emitted when an agent's health crosses a critical threshold.
+signal agent_critical(agent, health_ratio: float)
+
+## Emitted when a new wave of enemies is spawned.
+signal enemies_spawned(count: int, positions: Array)
