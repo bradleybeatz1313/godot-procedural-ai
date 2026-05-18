@@ -74,3 +74,13 @@ static func get_alive_agent_count() -> int:
 ## Returns elapsed time since level start in seconds.
 static func get_level_time() -> float:
 	return _instance._level_timer if _instance else 0.0
+
+## Pause all agent processing.
+static func pause_agents() -> void:
+	for node in _instance.get_tree().get_nodes_in_group("agents"):
+		node.set_physics_process(false)
+
+## Resume all agent processing.
+static func resume_agents() -> void:
+	for node in _instance.get_tree().get_nodes_in_group("agents"):
+		node.set_physics_process(true)
