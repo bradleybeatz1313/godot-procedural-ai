@@ -53,3 +53,10 @@ func walkable_tile_count() -> int:
 func is_walkable(world_pos: Vector2) -> bool:
 	var tile := (world_pos / tile_size).floor()
 	return _walkable_tiles.has(tile)
+
+## Returns a random walkable position using internal tile list.
+func random_walkable_pos() -> Vector2:
+	if _walkable_tiles.is_empty():
+		return Vector2.ZERO
+	var tile: Vector2 = _walkable_tiles.keys()[randi() % _walkable_tiles.size()]
+	return tile * tile_size + Vector2(tile_size, tile_size) * 0.5
