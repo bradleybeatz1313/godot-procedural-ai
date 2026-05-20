@@ -331,3 +331,11 @@ func get_threat_level() -> float:
 func set_difficulty(tier: int) -> void:
 	_difficulty_tier = clampi(tier, 0, 3)
 	_recalculate_spawn_rates()
+
+## Returns true if the director is currently in an active spawn wave.
+func is_wave_active() -> bool:
+	return _wave_active
+
+## Returns the index of the current wave (0-based).
+func get_wave_index() -> int:
+	return _wave_index
