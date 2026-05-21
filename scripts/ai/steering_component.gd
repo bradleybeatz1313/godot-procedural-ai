@@ -71,3 +71,12 @@ func wander(delta: float, jitter: float = 0.4) -> void:
 	_wander_angle += randf_range(-jitter, jitter)
 	var dir := Vector2(cos(_wander_angle), sin(_wander_angle))
 	_desired_velocity = _desired_velocity.lerp(dir * max_speed * 0.5, delta * 2.0)
+
+## Separation behavior: push away from nearby agents to avoid overlap.
+func separate(nearby: Array[Node2D], radius: float = 32.0) -> void:
+	var push := Vector2.ZERO
+	for other in nearby:
+		var diff := global_position - other.global_position
+		if diff.length() < radius:
+			push += diff.normalized() * (radius - diff.length())
+	_desired_velocity += push
