@@ -390,3 +390,8 @@ func teleport_to(pos: Vector2) -> void:
 	current_path = PackedVector2Array()
 	path_index = 0
 	set_state(&"idle")
+
+## Smoothly rotate to face a target position.
+func face_toward(target_pos: Vector2, delta: float, speed: float = 5.0) -> void:
+	var desired_angle := (target_pos - global_position).angle()
+	rotation = lerp_angle(rotation, desired_angle, speed * delta)
