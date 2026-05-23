@@ -145,3 +145,11 @@ The generator uses **Binary Space Partitioning (BSP)**:
 3. Connect adjacent rooms with L-shaped corridors
 4. Build A* navigation graph from walkable tiles
 5. Place agents at room centers, respecting faction spawn rules
+
+---
+
+## Known Issues
+
+- Large dungeons (> 200 rooms) may cause A* rebuild delays > 100ms on first load
+- `debug_draw` has a slight performance cost; disable in release builds
+- AI agents do not yet account for destructible walls
